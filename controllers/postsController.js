@@ -1,3 +1,6 @@
+//DataBase connection import:
+const connection = require('../data/postsDB.js');
+
 //Index (get)
 const index = (req, res) => {
    res.send('Lista dei post del blog')
