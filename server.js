@@ -12,7 +12,7 @@ const errorsHandler = require('./middlewares/errorsHandler.js');
 //postsRouter import:
 const postsRouter = require('./routers/postsRouter.js');
 
-
+//===========================================================
 
 //server root:
 app.get('/', (req, res) => {
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 //posts root:
 app.use('/posts', postsRouter);
 
-
+//===========================================================
 
 //use errors handler middleware:
 app.use(errorsHandler);
