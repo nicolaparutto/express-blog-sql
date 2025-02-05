@@ -3,7 +3,14 @@ const connection = require('../data/postsDB.js');
 
 //Index (get)
 const index = (req, res) => {
-   res.send('Lista dei post del blog')
+
+   const sql = 'SELECT * FROM posts';
+
+   connection.query(sql, (err, results) => {
+      if (err) return res.status(500).json({ error: 'Richiesta al db fallita' });
+      res.json(results)
+   })
+
 }
 
 //Show (get)
