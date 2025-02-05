@@ -7,8 +7,8 @@ const index = (req, res) => {
    const sql = 'SELECT * FROM posts';
 
    connection.query(sql, (err, results) => {
-      if (err) return res.status(500).json({ error: 'Richiesta al db fallita' });
-      res.json(results)
+      if (err) return res.status(500).json({ error: 'Errore durante il caricamento dei post' });
+      res.json(results);
    })
 
 }
@@ -39,7 +39,14 @@ const modify = (req, res) => {
 //Destroy (delete)
 const destroy = (req, res) => {
    const id = req.params.id;
-   res.send(`Ellimino il post ${id} del blog`)
+
+   const sql = 'DELETE FROM posts WHERE id = ?';
+   
+   connection.query(sql, [id], (err, results) => {
+      if (err) return res.status(204).json({ error: 'Errore durante l\'elliminazione del post' });
+      res.sendStatus(204);
+   })
+
 }
 
 module.exports = {
